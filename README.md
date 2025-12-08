@@ -347,4 +347,4 @@ npm test level=INFO
 
 If you have a feature request or run into any issues, feel free to submit an [issue](https://github.com/adpatter/socketnaut/issues) or start a [discussion](https://github.com/adpatter/socketnaut/discussions). You’re also welcome to reach out directly to one of the authors.
 
-- [Adam Patterson](https://github.com/adamjpatterson)
+- [Adam Patterson](https://github.com/adpatter)
