@@ -26,7 +26,7 @@ export class ServiceAgent extends Agent {
     this.server = options.server;
     this.server.once("listening", this.postListeningMessage.bind(this));
 
-    const logger = new Logger({ captureStackTrace: false, parent: null });
+    const logger = new Logger({ captureStackTrace: false });
     const agentHandler = new AgentHandler(this, "serviceLog");
     const log = logger.connect(agentHandler);
     this.log = log;
