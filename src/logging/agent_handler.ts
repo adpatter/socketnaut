@@ -1,9 +1,9 @@
 import * as stream from "node:stream";
-import { Agent } from "port_agent";
+import { Peer } from "@far-analytics/port-peer";
 import { Node, LogContext, SyslogLevelT, Config } from "streams-logger";
 
 export class AgentHandler extends Node<LogContext<string, SyslogLevelT>, never> {
-  constructor(agent: Agent, callable: string, streamOptions?: stream.WritableOptions) {
+  constructor(peer: Peer, callable: string, streamOptions?: stream.WritableOptions) {
     super(
       new stream.Writable({
         ...Config.getWritableOptions(true),
@@ -16,7 +16,14 @@ export class AgentHandler extends Node<LogContext<string, SyslogLevelT>, never> 
             callback: stream.TransformCallback
           ) => {
             (async () => {
-              await agent.call(callable, chunk);
+              await peer.call(callable, {
+                message: chunk.message,
+                level: chunk.level,
+                isotime: chunk.isotime,
+                pid: chunk.pid,
+                hostname: chunk.hostname,
+                threadId: chunk.threadid,
+              });
               callback();
             })().catch((reason: unknown) => {
               callback(reason instanceof Error ? reason : new Error(String(reason)));
