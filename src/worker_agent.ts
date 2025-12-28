@@ -1,13 +1,13 @@
 import * as threads from "node:worker_threads";
 import * as net from "node:net";
 import { once } from "node:events";
-import { Agent } from "port_agent";
+import { Peer } from "@far-analytics/port-peer";
 
 interface WorkerAgentOptions {
   worker: threads.Worker;
 }
 
-export class WorkerAgent extends Agent {
+export class WorkerAgent extends Peer {
   public worker: threads.Worker;
   public connections: number;
   public socketConnectOpts: Promise<net.SocketConnectOpts | null>;

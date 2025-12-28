@@ -2,7 +2,7 @@ import * as net from "node:net";
 import * as http from "node:http";
 import * as https from "node:https";
 import * as threads from "node:worker_threads";
-import { Agent } from "port_agent";
+import { Peer } from "@far-analytics/port-peer";
 import { ProxySocketAddressInfo } from "./types";
 import { Logger } from "streams-logger";
 import { AgentHandler } from "./logging/agent_handler";
@@ -13,7 +13,7 @@ export interface ServiceAgentOptions {
   server: http.Server | https.Server | net.Server;
 }
 
-export class ServiceAgent extends Agent {
+export class ServiceAgent extends Peer {
   public server: net.Server;
   public addressInfo?: string | net.AddressInfo | null;
   public agentDescription: string;
