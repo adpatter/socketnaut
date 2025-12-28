@@ -22,7 +22,7 @@ export class AgentHandler extends Node<LogContext<string, SyslogLevelT>, never> 
                 isotime: chunk.isotime,
                 pid: chunk.pid,
                 hostname: chunk.hostname,
-                threadId: chunk.threadid,
+                threadid: chunk.threadid
               });
               callback();
             })().catch((reason: unknown) => {
