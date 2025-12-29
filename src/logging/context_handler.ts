@@ -1,7 +1,7 @@
 import * as stream from "node:stream";
-import { Node, LogContext, SyslogLevelT, Config, LogContextOptions } from "streams-logger";
+import { Node, LogContext, Config } from "streams-logger";
 
-export class ContextHandler extends Node<LogContext<string, SyslogLevelT>, LogContext<string, SyslogLevelT>> {
+export class ContextHandler extends Node<LogContext, LogContext> {
   constructor(streamOptions?: stream.TransformOptions) {
     super(
       new stream.PassThrough({
@@ -15,9 +15,8 @@ export class ContextHandler extends Node<LogContext<string, SyslogLevelT>, LogCo
     );
   }
 
-  public write = async (logContextOptions: LogContextOptions): Promise<void> => {
+  public write = async (logContext: LogContext): Promise<void> => {
     try {
-      const logContext = new LogContext<string, SyslogLevelT>(logContextOptions);
       await super._write(logContext);
     } catch (err) {
       if (err instanceof Error) {

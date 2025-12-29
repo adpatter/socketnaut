@@ -2,7 +2,7 @@ import * as net from "node:net";
 import * as tls from "node:tls";
 import { EventEmitter, once } from "node:events";
 import * as threads from "node:worker_threads";
-import { LogContextOptions, Logger } from "streams-logger";
+import { LogContext, Logger } from "streams-logger";
 import { log, contextHandler } from "./logging/logger.js";
 import { WorkerAgent } from "./worker_agent.js";
 import { ProxySocketAddressInfo } from "./types.js";
@@ -315,8 +315,8 @@ export class ServiceProxy extends EventEmitter {
     return agent;
   };
 
-  protected serviceLog = (logContextOptions: LogContextOptions): void => {
-    void contextHandler.write(logContextOptions);
+  protected serviceLog = (logContext: LogContext): void => {
+    void contextHandler.write(logContext);
   };
 
   protected requestProxySocketAddressInfo = (proxyServerAddressInfo: string): ProxySocketAddressInfo | undefined => {
