@@ -13,7 +13,7 @@ Socketnaut can be used in order to scale the **main module** of web applications
 ### Features
 
 - Socketnaut requires 0 out-of-org dependencies. Socketnaut's dependencies are published and maintained by the FAR Analytics & Research org:
-  - [Streams Logger](https://github.com/far-analytics/streams-logger); a performant logger built from Node.js streams.
+  - [_Streams_ Logger](https://github.com/far-analytics/streams-logger); a performant logger built from Node.js streams.
   - [Port Peer](https://github.com/far-analytics/port-peer); an RPC-like facility for making inter-thread function calls.
 - The Socketnaut `ServiceProxy` and `ServiceAgent` constructors consume native Node [`net.Server`](https://nodejs.org/api/net.html#class-netserver), [`http.Server`](https://nodejs.org/api/http.html#class-httpserver), [`https.Server`](https://nodejs.org/api/https.html#class-httpsserver), and [`tls.Server`](https://nodejs.org/api/tls.html#class-tlsserver) instances; _you can configure them however you choose_.
 - Import Socketnaut as a Node.js module (see the [Hello, World!](#an-instance-of-hello-world-nodejs) example) or take advantage of the packaged type definitions and import it into your TypeScript project.
