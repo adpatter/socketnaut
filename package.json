@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@far-analytics/port-peer": "^1.0.0",
-    "streams-logger": "^2.0.0"
+    "streams-logger": "^3.0.0"
   },
   "engines": {
     "npm": ">=10.1.0",
